@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">猜數字</string>
+    <string name="please_enter_the_number">請輸入數字</string>
+    <string name="ok">確認</string>
+    <string name="Yes_you_got_it">猜對了</string>
+    <string name="bigging">大一點</string>
+    <string name="smaller">小一點</string>
+    <string name="dialot_title">提示訊息</string>
+</resources>
