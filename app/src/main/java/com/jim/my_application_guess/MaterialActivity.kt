@@ -1,5 +1,7 @@
 package com.jim.my_application_guess
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -11,7 +13,7 @@ import kotlinx.android.synthetic.main.content_material.*
 
 class MaterialActivity : AppCompatActivity() {
     val secretNumber=SecretNumber()
-    val TAG : String = MainActivity::class.java.simpleName
+    val TAG : String = MaterialActivity::class.java.simpleName
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,6 +33,12 @@ class MaterialActivity : AppCompatActivity() {
                 .show()
         }
         counter.setText(secretNumber.count.toString())
+        Log.d(TAG, "onCreate: ："+secretNumber.secret)
+        val count :Int=getSharedPreferences("guess",Context.MODE_PRIVATE)
+            .getInt("REC_COUNTER",-1)//讀"guess"檔案裡的REC_COUNTER，如果讀不到就顯示-1
+        val nick :String?=getSharedPreferences("guess",Context.MODE_PRIVATE)
+            .getString("REC_NICKNAME",null)//如果沒有就null值
+        Log.d(TAG, "data: "+ count +"/" + nick)//顯示除錯的資訊
     }
     fun check(view: View){
         val n:Int=number.text.toString().toInt()
@@ -47,7 +55,13 @@ class MaterialActivity : AppCompatActivity() {
         AlertDialog.Builder(this) //對話方塊
             .setTitle(getString(R.string.dialot_title))
             .setMessage(message)
-            .setPositiveButton(R.string.ok,null)
+            .setPositiveButton(R.string.ok, { dialog,which ->
+                if (diff == 0){
+                    val intent = Intent(this, RecordActivity ::class.java)
+                    intent.putExtra("COUNTER",secretNumber.count)//"COUNTER"代表標籤，裡頭要放count的資料
+                    startActivity(intent)//調跳轉至RecordActivity
+                }
+            })
             .show()
     }
 }
