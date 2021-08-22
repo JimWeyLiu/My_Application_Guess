@@ -1,6 +1,8 @@
 package com.jim.my_application_guess
 
+import android.app.Activity
 import android.content.Context
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -25,6 +27,10 @@ class RecordActivity : AppCompatActivity() {
                 .putString("REC_NICKNAME",nick)//儲存名稱,寫入資料(文字)
                 .apply()//apply不會很確定在這一行寫進去，apply運用一些技術等有空才寫入；如果在一行就要讀取它就要用commit
 //======================================================
+            val intent = Intent()
+            intent.putExtra("NICK",nick)
+            setResult(Activity.RESULT_OK,intent)
+            finish()//按下SAVE會回到前一頁
         }
     }
 }
