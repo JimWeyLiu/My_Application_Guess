@@ -3,7 +3,7 @@
     <string name="please_enter_the_number">Please enter the number(1~10)</string>
     <string name="ok">OK</string>
     <string name="Yes_you_got_it">Yes,you got it</string>
-    <string name="bigging">Bigger</string>
+    <string name="bigger">Bigger</string>
     <string name="smaller">Smaller</string>
     <string name="dialot_title">Message</string>
     <string name="title_activity_material" translatable="false">MaterialActivity</string>

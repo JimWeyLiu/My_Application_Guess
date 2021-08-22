@@ -47,7 +47,7 @@ class MaterialActivity : AppCompatActivity() {
         val diff : Int = secretNumber.validate(n)
         var message = getString(R.string.Yes_you_got_it)
         if (diff < 0) {
-            message = getString(R.string.bigging)
+            message = getString(R.string.bigger)
         } else if (diff > 0){
             message = getString(R.string.smaller)
         }
@@ -55,7 +55,7 @@ class MaterialActivity : AppCompatActivity() {
         AlertDialog.Builder(this) //對話方塊
             .setTitle(getString(R.string.dialot_title))
             .setMessage(message)
-            .setPositiveButton(R.string.ok, { dialog,which ->
+            .setPositiveButton(getString(R.string.ok), { dialog,which ->
                 if (diff == 0){
                     val intent = Intent(this, RecordActivity ::class.java)
                     intent.putExtra("COUNTER",secretNumber.count)//"COUNTER"代表標籤，裡頭要放count的資料

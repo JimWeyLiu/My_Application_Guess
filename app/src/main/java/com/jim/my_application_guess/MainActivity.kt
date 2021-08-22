@@ -32,7 +32,7 @@ class MainActivity : AppCompatActivity() {
         val diff : Int = secretNumber.validate(n)
         var message = getString(R.string.Yes_you_got_it)
         if (diff < 0) {
-            message = getString(R.string.bigging)
+            message = getString(R.string.bigger)
         } else if (diff > 0){
             message = getString(R.string.smaller)
         }
